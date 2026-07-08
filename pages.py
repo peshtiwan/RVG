@@ -686,6 +686,32 @@ a{color:inherit;text-decoration:none}
 </head>
 <body>
 <div class="toast" id="toast"></div>
+
+<!-- ══════ اطلاعیه رسمی مالکیت معنوی ══════ -->
+<div class="modal-bg" id="modal-copyright-notice" style="z-index:9999">
+  <div class="modal-v2" style="max-width:460px">
+    <div class="modal-v2-head" style="background:linear-gradient(155deg,rgba(239,68,68,.16) 0%,transparent 65%)">
+      <button class="modal-v2-close" onclick="closeModal('modal-copyright-notice')"><i class="ti ti-x"></i></button>
+      <div class="modal-v2-icon" style="background:linear-gradient(135deg,var(--red),#B91C1C);box-shadow:0 8px 18px rgba(239,68,68,.4)"><i class="ti ti-copyright"></i></div>
+      <div class="modal-v2-title">اطلاعیه رسمی مالکیت معنوی</div>
+      <div class="modal-v2-sub">توجه به موضوع نقض کپی‌رایت پروژه</div>
+    </div>
+    <div class="modal-v2-body">
+      <div class="cl amber" style="margin-top:0">
+        <i class="ti ti-alert-triangle"></i>
+        <span>به تازگی فردی اقدام به کپی‌برداری غیرمجاز از سورس‌کد این پروژه نموده و آن را تحت عنوان «X4G» بازنشر کرده است. این اقدام، نقض آشکار حقوق مالکیت معنوی (کپی‌رایت) پروژه‌ی RVG Gateway محسوب می‌شود.</span>
+      </div>
+      <div class="cl" style="margin-top:10px">
+        <i class="ti ti-info-circle"></i>
+        <span>از کاربران و همکاران محترم درخواست می‌شود از استفاده، انتشار یا معرفی نسخه‌ی کپی‌شده با نام «X4G» خودداری نموده و صرفاً از منبع رسمی و اصلی این پروژه — RVG Gateway · codebox — بهره‌مند شوند. هرگونه استفاده از نسخه‌ی مذکور، حقوق قانونی صاحب اثر را نقض می‌کند و پیگرد آن محفوظ است.</span>
+      </div>
+      <div class="modal-v2-footer">
+        <button class="btn btn-p" style="flex:1;justify-content:center" onclick="closeModal('modal-copyright-notice')"><i class="ti ti-check"></i> متوجه شدم</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="modal-bg" id="modal-links">
   <div class="modal-v2" style="max-width:500px">
     <div class="lmodal-head">
@@ -1771,6 +1797,7 @@ function wsConn(){const u=document.getElementById('ws-uuid').value.trim();if(!u)
 function wsSend(){const m=document.getElementById('ws-msg').value;if(!m||!ws||ws.readyState!==1)return;ws.send(m);wsLog('sent','ارسال: '+m);document.getElementById('ws-msg').value=''}
 function wsDisc(){if(ws)ws.close()}
 document.addEventListener('DOMContentLoaded',async()=>{
+  openModal('modal-copyright-notice');
   await checkAuth();
   initCharts();
   document.getElementById('set-host').textContent=location.host;
